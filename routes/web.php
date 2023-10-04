@@ -27,13 +27,28 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/auth/redirect', function () {
+Route::get('/auth/redirect/{option?}', function ($option) {
+    
+    if($option=='google'){
     return Socialite::driver('google')->redirect();
-})->name('login.google');
+    }elseif($option=='facebook'){
+    return Socialite::driver('facebook')->redirect();
+
+    }
+    
+
+})->name('login');
 
 
 Route::get('/auth/callback', function () {
+ 
     $user = Socialite::driver('google')->user();
+
     dd($user);
-    // $user->token
+});
+
+Route::get('/auth/facebook/callback',function(){
+    $user = Socialite::driver('facebook')->user();
+
+    dd($user);
 });

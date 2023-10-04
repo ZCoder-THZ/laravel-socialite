@@ -34,7 +34,9 @@
                 </label>
             </div>
 
-            <a href="{{ route('login.google') }}">Google</a>
+            <a href="{{ route('login','google') }}">Google <i class="fa-brands fa-google"></i></a>
+            <a href="{{ route('login','facebook') }}">Facebook <i class="fa-brands fa-facebook"></i></a>
+
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
